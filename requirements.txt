@@ -1,0 +1,8 @@
+django
+pandas
+scikit-learn
+numpy
+emoji
+keras
+matplotlib
+seaborn
