@@ -1,0 +1,21 @@
+﻿{% extends 'sentiment_analyzer/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Sentiment Analysis</h2>
+            </div>
+            <div class="card-body">
+                <p class="text-center">
+                    Welcome to the Sentiment Analysis Tool. Enter your comment to analyze its sentiment.
+                </p>
+                <div class="text-center mt-4">
+                    <a href="{% url 'sentiment_analysis' %}" class="btn btn-primary">Start Analysis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

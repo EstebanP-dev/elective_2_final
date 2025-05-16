@@ -1,0 +1,41 @@
+﻿{% extends 'sentiment_analyzer/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Analyze Your Comment</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ form.comment.label_tag }}
+                        {{ form.comment }}
+                        {% if form.comment.errors %}
+                            <div class="text-danger">
+                                {{ form.comment.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Analyze</button>
+                </form>
+
+                {% if result %}
+                <div class="sentiment-box
+                     {% if result.sentiment == 'happiness' or result.sentiment == 'love' or result.sentiment == 'enthusiasm' or result.sentiment == 'fun' %}sentiment-positive
+                     {% elif result.sentiment == 'sadness' or result.sentiment == 'anger' or result.sentiment == 'fear' or result.sentiment == 'worry' or result.sentiment == 'hate' %}sentiment-negative
+                     {% elif result.sentiment == 'Error' %}sentiment-error
+                     {% else %}sentiment-neutral{% endif %}">
+                    <h4>Analysis Result</h4>
+                    <p><strong>Comment:</strong> {{ comment }}</p>
+                    <p><strong>Sentiment:</strong> {{ result.sentiment|title }}</p>
+                    <p><strong>Feedback:</strong> {{ result.feedback }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
