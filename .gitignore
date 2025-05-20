@@ -3,3 +3,4 @@
 /.idea/
 db.sqlite3
 train/sentiment_model.pkl
+sentiment_analyzer/migrations/__pycache__/__init__.cpython-313.pyc
